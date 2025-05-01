@@ -80,11 +80,11 @@ cd vcp-graphical-central
 The nRF5340 Audio DK has two cores - one for the application and one dedicated for the network (bluetooth controller).
 The bluetooth controller can be builded from zephyr/samples/bluetooth/hci_ipc:
 ```
-west build -b nrf5340_audio_dk_nrf5340_cpunet -d build/hci_ipc ../zephyr/samples/bluetooth/hci_ipc --pristine -- -DCONF_FILE=nrf5340_cpunet_iso-bt_ll_sw_split.conf
+west build -b nrf5340dk/nrf5340/cpunet  -d build/hci_ipc ../zephyr/samples/bluetooth/hci_ipc --pristine -- -DCONF_FILE=nrf5340_cpunet_iso-bt_ll_sw_split.conf
 ```
 ### Application
 ```
-west build -b nrf5340_audio_dk_nrf5340_cpuapp -d build/app app --pristine -- -DSHIELD=adafruit_2_8_tft_touch_v2
+west build -b nrf5340dk/nrf5340/cpuapp -d build/app app --pristine -- -DSHIELD=adafruit_2_8_tft_touch_v2
 ```
 
 ## Flash
