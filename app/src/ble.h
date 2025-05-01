@@ -94,18 +94,126 @@ typedef void (scan_status_callback_t) (scan_status_t scan_st, const char *dev_na
 typedef void (conn_status_callback_t) (uint8_t conn_idx, conn_status_t conn_st);
 typedef void (vcp_status_callback_t) (vcp_type_t cb_type, void *vcp_user_data);
 
-
+//"""
+//Description:
+//    Initialize BT
+//IN:
+//    void
+//OUT:
+//    0 if correct
+//    -1 if BT cant be enabled
+//    -2 if CB cant be registered
+//"""
 int ble_bt_init(void);
+//"""
+//Description:
+//    Stop Scan
+//IN:
+//    void
+//OUT:
+//    0 if correct
+//    ? error code
+//"""
 int ble_stop_scan(void);
+//"""
+//Description:
+//    Start Scan
+//IN:
+//    void
+//OUT:
+//    -1 error
+//    0 Success
+//    1 Scan was already started
+//"""
 int ble_start_scan(void);
+//"""
+//Description:
+//    Start Scan (Force)
+//    Stops the scan if active to start again.
+//IN:
+//    void
+//OUT:
+//    -1 error
+//    Calls ble_start_scan on success
+//"""
 int ble_start_scan_force(void);
+//"""
+//Description:
+//??????????????
+//"""
 int ble_connect(uint8_t conn_idx);
+//"""
+//Description:
+//    Disconnect from device
+//IN:
+//    Device
+//OUT:
+//    -1 Failed to Disconnect
+//    0 Success
+//    1 Not conected in the first place
+//"""
 int ble_disconnect(uint8_t conn_idx);
+//"""
+//Description:
+//    Discover devices to connect
+//"""
 int ble_vcp_discover(uint8_t conn_idx);
+//"""
+//Description:
+//    Change output volume
+//    IN:
+//        List of devices
+//        Volume
+//    OUT:
+//        -2 Not connected
+//        -1 Operation Failed
+//        0 Success
+//"""
 int ble_update_volume(uint8_t conn_idx, uint8_t volume);
+//"""
+//Description:
+//    Change output volume
+//    IN:
+//        List of devices
+//        mute: 0|1 unmute mute
+//    OUT:
+//        -2 Not connected
+//        -1 Operation Failed
+//        0 Success
+//"""
 int ble_update_volume_mute(uint8_t conn_idx, uint8_t mute);
+//"""
+//Description:
+//Update offset of volume Offset COntrol Service
+//
+//
+//"""
 int ble_update_vocs_offset(uint8_t conn_idx, uint8_t inst_idx, int16_t offset);
+//"""
+//Description:
+//    Set Gain
+//IN:
+//    conn_idx:   connection index
+//    inst_idx:   Instance index
+//    gain:       Gain [-127,128]
+//OUT:
+//    -1  Fail
+//    0   Success
+//
+//"""
 int ble_update_aics_gain(uint8_t conn_idx, uint8_t inst_idx, int8_t gain);
+//"""
+//Description:
+//    Mute
+//IN:
+//    conn_idx:   connection index
+//    inst_idx:   Instance index
+//    mute:       0|1 
+//OUT:
+//    -1  Fail
+//    0   Success
+//
+//"""
 int ble_update_aics_mute(uint8_t conn_idx, uint8_t inst_idx, uint8_t mute);
 
 void ble_scan_status_cb_register(scan_status_callback_t *scan_status_cb);

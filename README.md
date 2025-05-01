@@ -97,9 +97,9 @@ nrfjprog --recover
 ```
 And flash with the west command:
 ```
-west flash -d build/hci_ipc
+west flash -r nrfjprog -d build/hci_ipc
 ```
 ### Application
 ```
-west flash -d build/app
+west flash -r nrfjprog -d build/app
 ```
